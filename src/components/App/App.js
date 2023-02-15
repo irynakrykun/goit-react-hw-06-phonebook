@@ -7,19 +7,6 @@ import ContactList from '../ContactList/ContactList';
 
 export const App = () => {
   
-
-  
-
-  
-
- 
-
-  // const normalizedFilter = filter.toLowerCase();
-
-  // const visibleContacts = contacts.filter(contact =>
-  //   contact.name.toLowerCase().includes(normalizedFilter)
-  // );
-
   return (
     <Contain>
       <PhoneBook>Phonebook</PhoneBook>

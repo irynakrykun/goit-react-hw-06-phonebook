@@ -32,12 +32,12 @@ const FormContacts = () => {
     >
       <FormLabel autoComplete="off">
         <label htmlFor="name">
-          Name
+          Name  
           <Field type="text" name="name" />
           <FormErr name="name" />
         </label>
         <label htmlFor="number">
-          Number
+          Number  
           <Field type="tel" name="number" />
           <FormErr name="number" />
         </label>
