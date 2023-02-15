@@ -1,4 +1,4 @@
-import { createSlice} from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialContacts = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -17,11 +17,7 @@ const contactsSlice = createSlice({
       },
       prepare(text) {
         return {
-          payload: text
-        //     text,
-        //     number:tel,
-        //     // id: nanoid(),
-        //   },
+          payload: text,
         };
       },
     },
