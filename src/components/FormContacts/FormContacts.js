@@ -3,7 +3,8 @@ import { Formik, Field } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
 import { Button, FormLabel, FormErr } from './FormContacts.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contactsSlice';
 
 const schema = yup.object().shape({
@@ -19,8 +20,23 @@ const initialValues = {
 
 const FormContacts = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { name, number } = values;
+
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
+      alert(`${name} is already in contacts`);
+      return;
+    } else if (contacts.find(contact => contact.number === number)) {
+      alert(`${number} is already in contacts`);
+      return;
+    }
+
     dispatch(addContact(values));
     resetForm();
   };
@@ -32,12 +48,12 @@ const FormContacts = () => {
     >
       <FormLabel autoComplete="off">
         <label htmlFor="name">
-          Name  
+          Name
           <Field type="text" name="name" />
           <FormErr name="name" />
         </label>
         <label htmlFor="number">
-          Number  
+          Number
           <Field type="tel" name="number" />
           <FormErr name="number" />
         </label>
